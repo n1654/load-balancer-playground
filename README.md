@@ -6,6 +6,27 @@ Here you play with:
  - nginx configuration
  - flask configuration
 
+## Diagram
+
+                                                  ┌──────────────┐
+                                                  │   python     │
+                                 ┌───────────────►│       app    │
+                                 │    tcp/5000    │              │
+                                 │                │ 172.24.0.102 │
+                                 │                └──────────────┘
+            ┌──────────────┐     │
+            │              ├─────┘
+  tcp/80    │    Nginx     │
+───────────►│              │
+            │ 172.24.0.101 ├─────┐
+            └──────────────┘     │
+                                 │                ┌──────────────┐
+                                 │                │   python     │
+                                 │    tcp/5000    │       app    │
+                                 └───────────────►│              │
+                                                  │ 172.24.0.103 │
+                                                  └──────────────┘
+
 ## Access
 access app through nginx: `http://<host-IP>:60080`
 
