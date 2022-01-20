@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+
+  front_end:
+    privileged: true
+    build:
+      context: .
+      dockerfile: front_end.dockerfile
+    volumes:
+      - ./conf/nginx/:/etc/nginx/conf.d/:ro
+    ports:
+      - "60080:80"
+    tty: true
+    networks:
+      default:
+        ipv4_address: 172.24.0.101
+    hostname: nginx
+
+  back_end_a:
+    privileged: true
+    build:
+      context: .
+      dockerfile: back_end_a.dockerfile
+    volumes:
+      - ./core-engine/:/home/:ro
+    ports:
+      - "5001:5000"
+    tty: true
+    networks:
+      default:
+        ipv4_address: 172.24.0.102
+    hostname: host_a
+
+  back_end_b:
+    privileged: true
+    build:
+      context: .
+      dockerfile: back_end_b.dockerfile
+    volumes:
+      - ./core-engine/:/home/:ro
+    ports:
+      - "5002:5000"
+    tty: true
+    networks:
+      default:
+        ipv4_address: 172.24.0.103
+    hostname: host_b
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.24.0.0/24
