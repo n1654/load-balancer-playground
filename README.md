@@ -37,6 +37,6 @@ access real server app 2 directly: `http://<host-IP>:5002/my-app/`
 ## Host port mapping
 | host:port | target:port | description |
 |---|---|---|
-| <host-IP>:60080 | 172.24.0.101:80 | nginx |
-| <host-IP>:5001 | 172.24.0.102:5000 | python flask app |
-| <host-IP>:5002 | 172.24.0.103:5000 | python flask app |
+| `<host-IP>`:60080 | 172.24.0.101:80 | nginx |
+| `<host-IP>`:5001 | 172.24.0.102:5000 | python flask app |
+| `<host-IP>`:5002 | 172.24.0.103:5000 | python flask app |
